@@ -1,0 +1,3 @@
+[submodule "ruby-on-rails"]
+	path = ruby-on-rails
+	url = ssh://git@bitbucket.org/pocha/codelearn_basic_rails_course.git

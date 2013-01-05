@@ -1,0 +1,78 @@
+<div class="container-fluid">
+
+<!--	<div class="treeslider"> -->
+
+		<!--<div class="treecontent">-->
+			<title><%= @title %></title>
+
+			<!-- Example row of columns -->
+				<% prev_url  = @current_task.number == 1 ? @current_lesson : @current_task.previous %>
+				<% next_url =  !@current_task.next.nil? ? (@current_task.next.number == 1 ? @current_lesson.next : @current_task.next) : nil %>
+		
+			<ul class="pager">
+		
+				<li class="previous">
+				<a href="<%= !prev_url.nil? ? create_url(prev_url) : '#' %>" class="btn previous <% if prev_url.nil? %>disabled<% end %>">&larr; Previous</a>
+				</li>
+				<li class="next">
+				<a href="<%= !next_url.nil? ? create_url(next_url) : '#' %>" class="btn <% if next_url.nil? %>disabled<% end %>">Next &rarr;</a>
+				</li>
+			</ul>
+
+			<div class="row-fluid">
+				<div class="span12">
+					<ul class="breadcrumb">
+						<li class="active">
+						<%= link_to "Rails Basic Course", lesson_path() %>
+						<a class="divider">/</a>
+						</li>
+						<li><%= @current_module.number%>. <%= @current_module.navigation_title %><a class="divider">/</a></li>
+						<li><%= @current_lesson.number%>. <%= @current_lesson.navigation_title %><a class="divider">/</a></li>
+						<li><%= @current_task.number%>. <%= @current_task.navigation_title %></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span12">
+					<h4>Module <%= @current_module.number %> - Lesson <%= @current_lesson.number %> - Task <%= @current_task.number %></h4>
+					<h1><%= @current_task.name %></h1>
+
+
+					<%= render 'ruby-on-rails/' + "#{@current_task.directory}/task" %>
+					<button class='btn btn-success btn-large' type="button" onclick="run_test()">Run tests</button>
+					<br>
+					<br>
+					<div class="alert alert-success <% if !@already_done %>hide<% end %>">
+					   <p>This test has already been passed by you</p>
+					</div>
+					<code>Test Output</code>
+
+					<div style="position:relative; width:100%;" id="task-output-wrapper">
+						<div style="position:absolute; left: 45%; top:45%; display:none" id='task-output-loading'>
+							<%= image_tag 'loading51.gif', :style => 'height:40px;' %>
+						</div>
+						<pre  style="min-height:200px; max-height:auto;"  id="task-output"> Click 'Run test' button above to verify if your task solution is right.</pre>
+					</div>
+				</div>
+			</div><!-- row-fluid -->
+			<ul class="pager">
+		
+				<li class="previous">
+				<a href="<%= !prev_url.nil? ? create_url(prev_url) : '#' %>" class="btn previous <% if prev_url.nil? %>disabled<% end %>">&larr; Previous</a>
+				</li>
+				<li class="next">
+				<a href="<%= !next_url.nil? ? create_url(next_url) : '#' %>" class="btn <% if next_url.nil? %>disabled<% end %>">Next &rarr;</a>
+				</li>
+			</ul>
+
+			<div id="module_no" class="hide"><%= @module_no %></div>
+			<div id="lesson_no" class="hide"><%= @lesson_no %></div>
+			<div id="task_no" class="hide"><%= @task_no %></div>
+
+
+
+			<!--</div>--><!-- tree content -->
+		<!--</div>-->
+</div><!-- container -->
+
+

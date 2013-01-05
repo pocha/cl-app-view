@@ -1,0 +1,79 @@
+<style>
+	
+	li.task-navigation > a, li.active.task-navigation > a {
+		padding-left: 25px;
+	}
+
+</style>
+
+<div class="container-fluid">
+
+	<!-- Example row of columns -->
+	<!--<div class="treeslider">-->
+
+
+		<!--<div class="treecontent">-->
+			<title><%= @title %></title>
+			<h1>Ruby on Rails basic course</h1>
+
+			<div class="row-fluid">
+				<div class="span12">
+
+
+					<% num_id = 1 %>
+					<% lesson_url = "/rails-tutorial/" %>
+
+					<div class="accordion" id="accordion2">
+						<% LessonCollection.all.each do |mod| %>
+							<% collapse_id = "#collapse" + num_id.to_s() %>
+							<% div_id = "collapse" + num_id.to_s() %>
+
+							<div class="accordion-group">
+								<div class="accordion-heading">
+									<span class="accordion-toggle" >
+										Module <%= mod.number%>. <%= mod.navigation_title %>
+									</span>
+								</div>
+
+								<div id=<%= div_id %> class="accordion-body collapse in">
+
+									<div class="accordion-inner">
+										<ul class="nav nav-list  bs-docs-sidenav">
+
+											<% @lessons = LessonCollection.find_by_number(mod.number).lessons; lesson_num = 1 %> 
+
+											<% @lessons.each do |lesson| %> 
+												<li>
+												<%= link_to "#{lesson_num}. #{lesson.navigation_title}", create_lesson_url(mod,lesson) %>
+												</li>
+												<% lesson_num = lesson_num + 1 %>
+												<% @lesson_tasks = lesson.tasks %>
+
+												<%  @lesson_tasks.each do |task| %>
+													<% task_url = create_task_url(mod,lesson,task)  %> 
+													<% if !@current_task.nil? &&  task.navigation_title == @current_task.navigation_title %>
+														<li class="active task-navigation">
+													<% else %>
+														<li class="task-navigation">
+													<% end %>
+													<a href=<%= task_url %>><i class="icon-tasks"></i>&nbsp;<%= task.navigation_title %></a></li>
+												<% end %>
+
+											<% end %>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<% num_id = num_id + 1 %>
+						<% end %>
+
+					</div>
+
+
+				</div>
+			</div>
+			<!--</div>-->
+
+	<!--</div>-->
+
+</div><!-- container -->

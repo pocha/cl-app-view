@@ -1,4 +1,9 @@
 CodelearnCourseView::Application.routes.draw do
+	root :to => "apps#new_layout"
+	match 'ruby-on-rails-tutorial(/:module_number/)(:module_name/)(:lesson_number/)(:lesson_name)' => 'apps#new_layout', :as => 'lesson'
+	match 'ruby-on-rails-tutorial/tasks/:module_number/:lesson_number/:lesson_name/:task_number/:task_name' => 'apps#new_layout', :as => 'task'
+	match "apps/code_play" => 'apps#new_layout', :as => 'code_play'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
