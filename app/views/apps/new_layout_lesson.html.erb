@@ -38,7 +38,7 @@
 					<h1><%= @current_lesson.name %></h1>
 
 
-					<%= render 'ruby-on-rails/' + @current_lesson.lesson_path %>
+					<%= render :partial => 'ruby-on-rails/' + @current_lesson.lesson_path, :locals => {:module_no => @module_no, :lesson_no => @lesson_no} %>
 
 				</div>
 				

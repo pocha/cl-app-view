@@ -1,0 +1,16 @@
+<div id="run-test-<%= module_no %>-<%= lesson_no %>-<%= task_no %>">
+	<button class='btn btn-success btn-large' type="button" onclick="run_test(<%= module_no %>,<%= lesson_no %>,<%= task_no %>)">Run tests</button>
+	<br>
+	<br>
+	<div class="alert alert-success hide" id="alert-task-passed-<%= module_no %>-<%= lesson_no %>-<%= task_no %>">
+	   <p>This test has already been passed by you</p>
+	</div>
+	<code>Test Output</code>
+
+	<div style="position:relative; width:100%;" id="task-output-wrapper">
+		<div style="position:absolute; left: 45%; top:45%; display:none" class='task-output-loading'>
+			<%= image_tag 'loading51.gif', :style => 'height:40px;' %>
+		</div>
+		<pre  style="min-height:200px; max-height:auto;"  class="task-output"> Click 'Run test' button above to verify what you did so far is right.</pre>
+	</div>
+</div>
