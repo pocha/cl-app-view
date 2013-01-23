@@ -30,6 +30,7 @@ l = lc.lessons.create(:number => 1,
 t = l.tasks.create(:number => 1,
 	         	   :name => "Create default app - your_site" , 
 	               :navigation_title => "Default app - your_site",
+			 	   :branch_name => "default-rails-app",
 	               :directory => "Module1/tasks/lesson2/task1")
 
 
@@ -50,8 +51,8 @@ l = lc.lessons.create(:number => 3 ,
 
 ##Module1 lesson4 Task1
 t = l.tasks.create(:number => 1,
-	          	   :name => "Create greetings page" , 
-	               :navigation_title => "After hello, say 'greetings'",
+	          	   :name => "Test HelloWorld.html page" , 
+			 	   :branch_name => "HelloWorld",
 	               :directory => "Module1/tasks/lesson4/task1")
 
 
@@ -65,6 +66,7 @@ l = lc.lessons.create(:number => 4 ,
 t = l.tasks.create(:number => 1,
 	          	   :name => "Create home & about pages through controller" , 
 	               :navigation_title => "Home & about pages",
+			 	   :branch_name => "master",
 	     	       :directory => "Module1/tasks/lesson5/task1")
 
 #Module1 lesson6
@@ -119,12 +121,14 @@ l = lc.lessons.create(:number => 2 ,
 t = l.tasks.create(:number => 1,
 	          	   :name => "Display one hardcoded todo from controller" , 
 	               :navigation_title => "Display one todo",
+	               :branch_name => "display-1-todo",
 	               :directory => "Module3/tasks/lesson1/task1")
 
 #Module 3 lesson 1 Task 2
 t = l.tasks.create(:number => 2,
 	          	   :name => "Display multiple hardcoded todos from controller using array" , 
 	               :navigation_title => "Display multiple todos",
+	               :branch_name => "display-multiple-todos",
 	               :directory => "Module3/tasks/lesson1/task2")
 
 
@@ -140,16 +144,22 @@ l = lc.lessons.create(:number => 3 ,
 t = l.tasks.create(:number => 1,
 	          	   :name => "Store todo using Console, fetch it in controller & show on the view" , 
 	               :navigation_title => "Todos from database",
+	               :branch_name => "todo-from-db",
 	               :directory => "Module3/tasks/lesson2/task1")
 
+l = lc.lessons.create(:number => 4 ,
+			   :name => "Implementing 'delete last todo' link" , 
+			   :navigation_title => "Learning to delete last todo",
+	           :lesson_path => "Module3/tasks/lesson2/task2/task")
+
+
 #Module 3 lesson 2 Task 2
-t = l.tasks.create(:number => 2,
-	          	   :name => "Implementing 'delete last todo' link" , 
-	               :navigation_title => "Delete last todo",
+t = l.tasks.create(:number => 1,
+	               :branch_name => "delete-last-todo",
 	               :directory => "Module3/tasks/lesson2/task2")
 
 #Module 3 lesson 3
-l = lc.lessons.create(:number => 4 ,
+l = lc.lessons.create(:number => 5 ,
 	          :name => "Views, layout, helper methods & assets pipeline" , 
 	          :navigation_title => "Add Twitter Bootstrap CSS",
 	          :lesson_path => "Module3/lesson3")
@@ -158,6 +168,7 @@ l = lc.lessons.create(:number => 4 ,
 t = l.tasks.create(:number => 1,
 	          	   :name => "Add bootstrap CSS, insert navbar & put todos in well" , 
 	               :navigation_title => "Bootstrap CSS with navbar",
+	               :branch_name => "beautiful-todo-app",
 	               :directory => "Module3/tasks/lesson3/task1")
 
 #Module 3 lesson 3 Task 2
@@ -199,15 +210,30 @@ l = lc.lessons.create(
 t = l.tasks.create(:number => 1,
 	               :name => "Implement adding todo",
 	               :navigation_title => "Form to add todo",
+	               :branch_name => "add-todo-form_tag",
 	               :directory => "Module4/tasks/lesson1/task1")
 
 t = l.tasks.create(:number => 2,
-	               :name => "How to use form_for",
-	               :navigation_title => "form_for instead of form_tag",
+	               :name => "Implement adding todo with validations",
+	               :navigation_title => "Form to add todo and validation",
+	               :branch_name => "add-todo-form_tag",
 	               :directory => "Module4/tasks/lesson1/task2")
 
 l = lc.lessons.create( 
 	          :number => 2 ,
+			   :name => "form_for in Rails",
+			   :navigation_title => "Adding todo through form_for",
+	          :lesson_path => "Module4/tasks/lesson1/task3/task")
+
+
+t = l.tasks.create(:number => 1,
+	               :name => "How to use form_for",
+	               :navigation_title => "form_for instead of form_tag",
+	               :branch_name => "todo-add-via-form-for",
+	               :directory => "Module4/tasks/lesson1/task3")
+
+l = lc.lessons.create( 
+	          :number => 3 ,
 	          :name => "Rails migration, form_for & checkboxes" ,
 	          :navigation_title => "Mark todo complete",
 	          :lesson_path => "Module4/lesson2")
@@ -215,15 +241,17 @@ l = lc.lessons.create(
 t = l.tasks.create(:number => 1,
 	               :name => "Marking todos complete",
 	               :navigation_title => "Marking todos complete",
+	               :branch_name => "complete-todo",
 	               :directory => "Module4/tasks/lesson2/task1")
 
 t = l.tasks.create(:number => 2,
 	               :name => "Toggle todos status",
 	               :navigation_title => "Toggle todos",
+	               :branch_name => "toggle-todos",
 	               :directory => "Module4/tasks/lesson2/task2")
 
 l = lc.lessons.create( 
-	          :number => 3 ,
+	          :number => 4 ,
 	          :name => "Coming soon" , 
 	          :navigation_title => "Edit & delete todos",
 	          :lesson_path => "Module4/lesson3")
@@ -241,7 +269,7 @@ t = l.tasks.create(:number => 2,
 
 =end
 l = lc.lessons.create( 
-	          :number => 4 ,
+	          :number => 5 ,
 	          :name => "Coming soon" , 
 	          :navigation_title => "Ajaxifying operations",
 	          :lesson_path => "Module4/lesson4")

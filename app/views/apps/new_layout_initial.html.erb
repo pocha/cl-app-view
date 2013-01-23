@@ -9,11 +9,9 @@
 <div class="container-fluid">
 
 	<!-- Example row of columns -->
-	<!--<div class="treeslider">-->
 
 
-		<!--<div class="treecontent">-->
-			<title><%= @title %></title>
+			<div class="hide title"><%= @title %></div>
 			<h1>Ruby on Rails basic course</h1>
 
 			<div class="row-fluid">
@@ -21,6 +19,7 @@
 
 
 					<% num_id = 1 %>
+					<% lesson_url = "/rails-tutorial/" %>
 
 					<div class="accordion" id="accordion2">
 						<% LessonCollection.all.each do |mod| %>
@@ -46,18 +45,6 @@
 												<%= link_to "#{lesson_num}. #{lesson.navigation_title}", create_lesson_url(mod,lesson) %>
 												</li>
 												<% lesson_num = lesson_num + 1 %>
-												<% @lesson_tasks = lesson.tasks %>
-
-												<%  @lesson_tasks.each do |task| %>
-													<% task_url = create_task_url(mod,lesson,task)  %> 
-													<% if !@current_task.nil? &&  task.navigation_title == @current_task.navigation_title %>
-														<li class="active task-navigation">
-													<% else %>
-														<li class="task-navigation">
-													<% end %>
-													<a href=<%= task_url %>><i class="icon-tasks"></i>&nbsp;<%= task.navigation_title %></a></li>
-												<% end %>
-
 											<% end %>
 										</ul>
 									</div>
@@ -69,10 +56,8 @@
 					</div>
 
 
-				</div>
-			</div>
-			<!--</div>-->
+		</div>
 
-	<!--</div>-->
+	</div>
 
 </div><!-- container -->

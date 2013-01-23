@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121225184418) do
+ActiveRecord::Schema.define(:version => 20130118110508) do
 
   create_table "bulkmails", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20121225184418) do
     t.integer  "number"
     t.string   "name"
     t.string   "navigation_title"
+    t.string   "branch_name"
   end
 
   create_table "user_activities", :force => true do |t|
