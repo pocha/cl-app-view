@@ -1,22 +1,21 @@
 <div class="container-fluid">
 
+	<!--<div class="treeslider"> 
 
-			<title><%= @title %></title>
-			
+		<div class="treecontent"> -->
+			<div class="hide title"><%= @title %></div>
+			<div id="GA-Event-Action" class="hide">M<%= @current_module.number %>-<%= @current_lesson.navigation_title %></div>
 			<!-- Example row of columns -->
-				<% prev_url  = !@current_lesson.previous.nil? ? (@current_lesson.previous.tasks.last || @current_lesson.previous) : nil %>
-				<% next_url =  @current_lesson.tasks.first || @current_lesson.next %>
+				<% prev_url  = !@current_lesson.previous.nil? ? @current_lesson.previous : nil %>
+				<% next_url =  !@current_lesson.next.nil? ?  @current_lesson.next : nil %>
 		
 			<ul class="pager">
 		
 				<li class="previous">
-				<a href="<%= !prev_url.nil? ? create_url(prev_url) : '#' %>" class="btn previous <% if prev_url.nil? %>disabled<% end %>">&larr; Previous</a>
+				<a href="<%= !prev_url.nil? ? create_url(prev_url) : lesson_path %>" class="btn previous <% if prev_url.nil? %>disabled<% end %>">&larr; Previous</a>
 				</li>
-				<% if !@current_task.nil? %>
-					<li style="text-align:center"><a class="btn-large  btn-primary" href="#task_output">Verify your task solution </a></li>
-				<% end %>
 				<li class="next">
-				<a href="<%= !next_url.nil? ? create_url(next_url) : '#' %>" class="btn <% if next_url.nil? %>disabled<% end %>">Next &rarr;</a>
+				<a href="<%= !next_url.nil? ? create_url(next_url) : lesson_path %>" class="btn <% if next_url.nil? %>disabled<% end %>">Next &rarr;</a>
 				</li>
 			</ul>
 
@@ -43,17 +42,31 @@
 				</div>
 				
 			</div>
+
+	
+
+			
 			<ul class="pager">
 		
 				<li class="previous">
-				<a href="<%= !prev_url.nil? ? create_url(prev_url) : '#' %>" class="btn previous <% if prev_url.nil? %>disabled<% end %>">&larr; Previous</a>
+				<a href="<%= !prev_url.nil? ? create_url(prev_url) : lesson_path %>" class="btn previous <% if prev_url.nil? %>disabled<% end %>">&larr; Previous</a>
 				</li>
-				<% if !@current_task.nil? %>
-					<li style="text-align:center"><a class="btn-large  btn-primary" href="#task_output">Verify your task solution </a></li>
-				<% end %>
 				<li class="next">
 				<a href="<%= !next_url.nil? ? create_url(next_url) : '#' %>" class="btn <% if next_url.nil? %>disabled<% end %>">Next &rarr;</a>
 				</li>
 			</ul>
-
+			<div class="row-fluid">
+				<div class="span12">
+					<ul class="breadcrumb">
+						<li class="active">
+						<%= link_to "Rails Basic Course", lesson_path() %>
+						<a class="divider">/</a>
+						</li>
+						<li><%= @current_module.number%>. <%= @current_module.navigation_title %><a class="divider">/</a></li>
+						<li><%= @current_lesson.number%>. <%= @current_lesson.navigation_title %></li>
+					</ul>
+				</div>
+		<!--	</div>	
+</div> -->
+	</div>
 </div><!-- container -->
